@@ -236,7 +236,7 @@ static int picotts_exec(struct ast_channel *chan, const char *data)
 	res = picotts_text_to_wave(rawpico_tmp_name,voice_name,args.text);
 	
 	char temp[1024];
-	sprintf(temp,"sox %s -r 8000 -c1 %s resample -ql",rawpico_tmp_name,raw_tmp_name);
+	sprintf(temp,"sox -v 0.8 %s -r 8000 -c1 %s resample -ql",rawpico_tmp_name,raw_tmp_name);
 	system(temp);
 	unlink(rawpico_tmp_name);
 	sample_rate = 16000;
