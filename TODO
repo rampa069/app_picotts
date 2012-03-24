@@ -1,0 +1,3 @@
+
+* Eliminate the sox dependecies. may be using libresample.
+* use libttspico instead of the system call to pico2wave.

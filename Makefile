@@ -39,14 +39,14 @@ install: _all
 	$(INSTALL) -m 755 -d $(DESTDIR)$(MODULES_DIR)
 	$(INSTALL) -m 755 app_picotts.so $(DESTDIR)$(MODULES_DIR)
 	
-	@echo " +---- app_picotts Installation Complete -----+"  
-	@echo " +                                           +"
-	@echo " + app_espeak has successfully been installed+"  
-	@echo " + If you would like to install the sample   +"  
-	@echo " + configuration file run:                   +"
-	@echo " +                                           +"
-	@echo " +              make samples                 +"
-	@echo " +-------------------------------------------+"
+	@echo " +---- app_picotts Installation Complete ------+"  
+	@echo " +                                             +"
+	@echo " + app_picotts has successfully been installed +"  
+	@echo " + If you would like to install the sample     +"  
+	@echo " + configuration file run:                     +"
+	@echo " +                                             +"
+	@echo " +              make samples                   +"
+	@echo " +---------------------------------------------+"
 
 samples:
 	mkdir -p $(DESTDIR)$(ASTETCDIR)
