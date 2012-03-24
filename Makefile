@@ -1,5 +1,5 @@
 #
-# Makefile for Asterisk espeak application
+# Makefile for Asterisk PicoTTS application
 #
 
 INSTALL=install
@@ -33,7 +33,7 @@ app_picotts.so: app_picotts.o
 
 
 clean:
-	rm -f app_picotts.o app_picotts.so .*.d *.o *.so
+	rm -f app_picotts.o app_picotts.so .*.d *.o *.so *~
 
 install: _all
 	$(INSTALL) -m 755 -d $(DESTDIR)$(MODULES_DIR)

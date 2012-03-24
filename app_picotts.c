@@ -1,9 +1,9 @@
 /*
  * Asterisk -- An open source telephony toolkit.
  *
- * Copyright (C) 2009 - 2011, Lefteris Zafiris
+ * Copyright (C) 2012 Ramon Martinez 
  *
- * Lefteris Zafiris <zaf.000@gmail.com>
+ * Ramon Martinez <rampa@encomix.org>
  *
  * See http://www.asterisk.org for more information about
  * the Asterisk project. Please do not directly contact
@@ -20,9 +20,9 @@
  *
  * \brief Say text to the user, using PicoTTS TTS engine.
  *
- * \author\verbatim Lefteris Zafiris <zaf.000@gmail.com> \endverbatim
+ * \author\verbatim Ramon Martinez <rampa@encomix.org>  based on works of Lefteris Zafiris <zaf.000@gmail.com>\endverbatim
  *
- * \extref PicoTTS text to speech Synthesis System - http://www.speech.cs.cmu.edu/picotts/
+ * \extref PicoTTS text to speech Synthesis System 
  *
  * \ingroup applications
  */
@@ -36,7 +36,6 @@
 ASTERISK_FILE_VERSION(__FILE__, "$Revision: 00 $")
 #include <stdio.h>
 #include <string.h>
-//#include <picotts/picotts.h>
 #include "asterisk/file.h"
 #include "asterisk/channel.h"
 #include "asterisk/module.h"
@@ -240,22 +239,15 @@ static int picotts_exec(struct ast_channel *chan, const char *data)
 	sprintf(temp,"sox %s -r 8000 -c1 %s resample -ql",rawpico_tmp_name,raw_tmp_name);
 	system(temp);
 	unlink(rawpico_tmp_name);
-	//rename(rawpico_tmp_name,raw_tmp_name);
 	sample_rate = 16000;
 
-	/* Resample if needed */
-	//if (sample_rate != target_sample_rate)
-	//	cst_wave_resample(raw_data, target_sample_rate);
-	//
-	//res = cst_wave_save_raw(raw_data, raw_tmp_name);
-	//delete_wave(raw_tmp_name);
 
 	if (res==-1) {
 		ast_log(LOG_ERROR, "PicoTTS: failed to write file %s , code %d\n", raw_tmp_name,res);
 		return res;
 	}
 
-	/* Save file to cache if set */
+
 	if (writecache) {
 		ast_debug(1, "PicoTTS: Saving cache file %s\n", cachefile);
 		ast_filecopy(tmp_name, cachefile, NULL);

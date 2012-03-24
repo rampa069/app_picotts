@@ -6,7 +6,7 @@
 ;
 ; Use cache (yes, no - defaults to no)
 ;
-usecache=yes
+usecache=no
 ;
 ; If usecache=yes, a directory to store waveform cache files.
 ; The cache is never cleared (yet), so you must take care of cleaning it
@@ -16,13 +16,15 @@ usecache=yes
 ;
 cachedir=/var/lib/asterisk/picottscache/
 ;
-; Voice name (defaults to kal)
+; Voice name (defaults to en-US)
 ; 
-; Available voices (for flite 1.4):
-;	kal (American male)
-;	rms (American male)
-;	awb (Scottish male)
-;	slt (American female)
+; Available voices (languages):
+;	en-US (American english)
+;	en-GB (british english)
+;	de-DE (German)
+;	es-ES (Spanish)
+;	fr-FR (French)
+;	it-IT (Italian)
 ;
 voice=es-ES
 ;
