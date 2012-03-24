@@ -55,7 +55,7 @@ ASTERISK_FILE_VERSION(__FILE__, "$Revision: 00 $")
 static char *app = "PicoTTS";
 static char *synopsis = "Say text to the user, using PicoTTS TTS engine";
 static char *descrip =
-	" PicoTTS(text[,intkeys]): This will invoke the PicoTTS TTS engine, send a text string,\n"
+	" PicoTTS(text[,intkeys][,language]): This will invoke the PicoTTS TTS engine, send a text string,\n"
 	"get back the resulting waveform and play it to the user, allowing any given interrupt\n"
 	"keys to immediately terminate and return the value, or 'any' to allow any number back.\n";
 
@@ -141,12 +141,12 @@ static int picotts_exec(struct ast_channel *chan, const char *data)
 
 	AST_DECLARE_APP_ARGS(args,
 		AST_APP_ARG(text);
-		AST_APP_ARG(lang);
 		AST_APP_ARG(interrupt);
+		AST_APP_ARG(lang);
 	);
 
 	if (ast_strlen_zero(data)) {
-		ast_log(LOG_ERROR, "PicoTTS requires an argument (text)\n");
+		ast_log(LOG_ERROR, "PicoTTS requires t least an argument (text)\n");
 		return -1;
 	}
 
@@ -157,6 +157,7 @@ static int picotts_exec(struct ast_channel *chan, const char *data)
 	if (args.interrupt && !strcasecmp(args.interrupt, "any"))
 		args.interrupt = AST_DIGIT_ANY;
 
+	
 	args.text = ast_strip_quoted(args.text, "\"", "\"");
 	args.lang = ast_strip_quoted(args.lang, "\"", "\"");
 	if (ast_strlen_zero(args.text)) {
@@ -166,7 +167,6 @@ static int picotts_exec(struct ast_channel *chan, const char *data)
 
 	if (ast_strlen_zero(args.lang)) {
 		ast_log(LOG_WARNING, "PicoTTS: language is default: %s.\n", voice_name);
-		return res;
 	}
 	else
 	{

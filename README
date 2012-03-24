@@ -39,8 +39,8 @@ dialplan sample code for your extensions.conf
 
 ;PicoTTS Demo
 exten => 1234,1,Answer()
-exten => 1234,n,PicoTTS("This is a simple test in english.",en-US,any)
-exten => 1234,n,PicoTTS("Esto es una prueba en español.",es-ES,any)
+exten => 1234,n,PicoTTS("This is a simple test in english.",any,en-US)
+exten => 1234,n,PicoTTS("Esto es una prueba en español.",any,es-ES)
 exten => 1234,n,Hangup()
 
 -------
